@@ -1,0 +1,879 @@
+  <!DOCTYPE html>                                                                                                                                                                                                                    
+  <html lang="ja">                                                                                                                                                                                                                   
+  <head>                                                                                                                                                                                                                                 <meta charset="UTF-8">                                                                                                                                                                                                           
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">                                                                                                                                                           
+    <title>石窯生食パン | 石窯パン工房 Bakery Demain</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --cream:       #FDF6EC;
+        --beige:       #F2E8D6;
+        --white:       #FFFFFF;
+        --brown-dark:  #3D1E00;
+        --brown-mid:   #7A4E28;
+        --brown-light: #BFA07A;
+        --orange:      #D4820A;
+        --orange-bg:   #E89420;
+        --text:        #3D1E00;
+        --text-mid:    #6B4422;
+        --text-light:  #9C7550;
+      }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: 'Noto Sans JP', sans-serif;
+        color: var(--text);
+        background: var(--cream);
+        line-height: 1.8;
+        overflow-x: hidden;
+      }
+
+      /* ─── HEADER ─────────────────────────────── */
+      header {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 200;
+        background: rgba(253, 246, 236, 0.96);
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 40px;
+        border-bottom: 1px solid rgba(212, 130, 10, 0.18);
+      }
+
+      .hd-logo {
+        height: 48px;
+        width: auto;
+        object-fit: contain;
+      }
+
+      nav a {
+        color: var(--brown-mid);
+        text-decoration: none;
+        font-size: 12.5px;
+        letter-spacing: .12em;
+        margin-left: 28px;
+        font-family: 'Noto Serif JP', serif;
+        transition: color .2s;
+      }
+      nav a:hover { color: var(--orange); }
+
+      /* ─── HERO ───────────────────────────────── */
+      .hero {
+        position: relative;
+        height: 100vh;
+        min-height: 860px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .hero__bg {
+        position: absolute;
+        inset: 0;
+        background: url('C:/Users/AYUMU OTA/Downloads/DSC04215Ssize.JPG') center/cover no-repeat;
+        transform: scale(1.04);
+        filter: brightness(.68);
+        transition: transform 8s ease;
+      }
+
+      .hero__overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(160deg, rgba(61,30,0,.25) 0%, rgba(61,30,0,.6) 100%);
+      }
+
+      .hero__content {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        text-align: center;
+        color: #fff;
+        padding: 90px 24px 120px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .hero__product-logo {
+        max-height: 52vh;
+        width: auto;
+        max-width: clamp(440px, 62vw, 760px);
+        filter: brightness(0) invert(1) drop-shadow(0 4px 28px rgba(255,255,255,.25));
+      }
+
+      .hero__text-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .hero__catch {
+        font-family: 'Noto Serif JP', serif;
+        font-size: clamp(26px, 5vw, 54px);
+        font-weight: 300;
+        letter-spacing: .18em;
+        line-height: 1.7;
+        text-shadow: 0 2px 24px rgba(0,0,0,.4);
+        margin-bottom: 20px;
+      }
+
+      .hero__sub {
+        font-size: clamp(12px, 1.8vw, 15px);
+        letter-spacing: .28em;
+        opacity: .85;
+        font-weight: 300;
+      }
+
+      .hero__scroll {
+        position: absolute;
+        bottom: 36px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        color: rgba(255,255,255,.7);
+        font-size: 10px;
+        letter-spacing: .25em;
+      }
+
+      .hero__scroll-line {
+        width: 1px;
+        height: 52px;
+        background: rgba(255,255,255,.5);
+        animation: scrollDrop 2.2s ease-in-out infinite;
+        transform-origin: top;
+      }
+
+      @keyframes scrollDrop {
+        0%   { transform: scaleY(0); opacity: 1; transform-origin: top; }
+        50%  { transform: scaleY(1); opacity: 1; transform-origin: top; }
+        51%  { transform: scaleY(1); opacity: 1; transform-origin: bottom; }
+        100% { transform: scaleY(0); opacity: 0; transform-origin: bottom; }
+      }
+
+      /* ─── SECTION COMMONS ────────────────────── */
+      section { padding: 88px 24px; }
+
+      .wrap      { max-width: 860px;  margin: 0 auto; }
+      .wrap-wide { max-width: 1080px; margin: 0 auto; }
+
+      .eyebrow {
+        font-family: 'Playfair Display', serif;
+        font-size: 11px;
+        letter-spacing: .35em;
+        color: var(--orange);
+        text-transform: uppercase;
+        margin-bottom: 14px;
+        display: block;
+      }
+
+      .sec-title {
+        font-family: 'Noto Serif JP', serif;
+        font-size: clamp(22px, 4vw, 38px);
+        font-weight: 300;
+        letter-spacing: .1em;
+        line-height: 1.55;
+      }
+
+      .rule {
+        width: 36px;
+        height: 2px;
+        background: var(--orange);
+        margin: 22px 0;
+      }
+      .rule--center { margin: 22px auto; }
+
+      /* ─── QUESTION ───────────────────────────── */
+      .sec-question {
+        background: var(--white);
+        text-align: center;
+      }
+
+      .question__headline {
+        font-family: 'Noto Serif JP', serif;
+        font-size: clamp(20px, 3.6vw, 34px);
+        font-weight: 300;
+        letter-spacing: .1em;
+        line-height: 2;
+        color: var(--brown-dark);
+      }
+
+      .question__body {
+        margin-top: 28px;
+        font-size: 14.5px;
+        line-height: 2.5;
+        color: var(--text-light);
+        font-weight: 300;
+      }
+
+      /* ─── WHAT IS ─────────────────────────────── */
+      .sec-what { background: var(--cream); }
+
+      .what__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: center;
+        margin-top: 52px;
+      }
+
+      .what__img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        display: block;
+      }
+
+      .what__lead {
+        font-family: 'Noto Serif JP', serif;
+        font-size: clamp(17px, 2.4vw, 22px);
+        font-weight: 400;
+        line-height: 2;
+        margin-bottom: 22px;
+        color: var(--brown-dark);
+      }
+
+      .what__body {
+        font-size: 14px;
+        line-height: 2.5;
+        color: var(--text-light);
+        font-weight: 300;
+      }
+
+      /* ─── KODAWARI ───────────────────────────── */
+      .sec-kodawari {
+        background: var(--brown-dark);
+        color: #fff;
+        text-align: center;
+      }
+
+      .sec-kodawari .eyebrow { color: #E8B460; }
+      .sec-kodawari .sec-title { color: #fff; }
+
+      .kodawari__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+        margin-top: 60px;
+      }
+
+      .kodawari__card {
+        position: relative;
+        padding: 44px 28px 36px;
+        border: 1px solid rgba(232,180,96,.28);
+      }
+
+      .kodawari__num {
+        font-family: 'Playfair Display', serif;
+        font-size: 52px;
+        color: var(--orange-bg);
+        opacity: .5;
+        line-height: 1;
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .kodawari__icon {
+        font-size: 38px;
+        display: block;
+        margin-bottom: 14px;
+      }
+
+      .kodawari__ttl {
+        font-family: 'Noto Serif JP', serif;
+        font-size: 17px;
+        font-weight: 400;
+        letter-spacing: .1em;
+        color: #E8B460;
+        margin-bottom: 16px;
+      }
+
+      .kodawari__body {
+        font-size: 13px;
+        line-height: 2.1;
+        color: rgba(255,255,255,.72);
+        font-weight: 300;
+        text-align: left;
+      }
+
+      /* ─── STORY ──────────────────────────────── */
+      .sec-story { background: var(--beige); }
+
+      .story__tag {
+        display: inline-block;
+        background: var(--orange);
+        color: #fff;
+        font-size: 11px;
+        letter-spacing: .25em;
+        padding: 5px 18px;
+        margin-bottom: 16px;
+      }
+
+      .story__layout {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 64px;
+        align-items: start;
+        margin-top: 52px;
+      }
+
+      .story__visual {
+        position: sticky;
+        top: 90px;
+      }
+
+      .story__kiln {
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--brown-dark);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      /* SVG石窯イラスト */
+      .story__kiln svg { width: 70%; height: auto; }
+
+      .story__since {
+        text-align: center;
+        font-family: 'Playfair Display', serif;
+        font-size: 12px;
+        letter-spacing: .2em;
+        color: var(--orange);
+        margin-top: 16px;
+      }
+
+      .story__block {
+        margin-bottom: 44px;
+      }
+      .story__block:last-child { margin-bottom: 0; }
+
+      .story__block h3 {
+        font-family: 'Noto Serif JP', serif;
+        font-size: 17px;
+        font-weight: 400;
+        letter-spacing: .08em;
+        border-left: 3px solid var(--orange);
+        padding-left: 14px;
+        margin-bottom: 14px;
+        color: var(--brown-dark);
+      }
+
+      .story__block p {
+        font-size: 14px;
+        line-height: 2.5;
+        color: var(--text-mid);
+        font-weight: 300;
+      }
+
+      /* ─── EAT ────────────────────────────────── */
+      .sec-eat {
+        background: var(--white);
+        text-align: center;
+        padding-bottom: 0;
+      }
+
+      .eat__headline {
+        font-family: 'Noto Serif JP', serif;
+        font-size: clamp(22px, 4vw, 42px);
+        font-weight: 300;
+        letter-spacing: .15em;
+        line-height: 1.8;
+        color: var(--brown-dark);
+        margin-bottom: 20px;
+      }
+
+      .eat__body {
+        font-size: 14px;
+        line-height: 2.6;
+        color: var(--text-light);
+        font-weight: 300;
+        max-width: 560px;
+        margin: 0 auto 60px;
+      }
+
+      .eat__photo {
+        width: 100%;
+        max-height: 520px;
+        object-fit: cover;
+        object-position: center 35%;
+        display: block;
+      }
+
+      /* ─── LINEUP ─────────────────────────────── */
+      .sec-lineup { background: var(--cream); }
+
+      .lineup__grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+        margin-top: 52px;
+        margin-bottom: 28px;
+      }
+
+      .lineup__card {
+        background: var(--white);
+        padding: 28px 12px 24px;
+        text-align: center;
+        border-top: 3px solid var(--orange);
+      }
+
+      .lineup__size-en {
+        font-family: 'Playfair Display', serif;
+        font-size: 30px;
+        color: var(--orange);
+        line-height: 1;
+      }
+
+      .lineup__size-ja {
+        font-size: 10.5px;
+        color: var(--text-light);
+        letter-spacing: .1em;
+        margin: 4px 0 18px;
+      }
+
+      .lineup__price {
+        font-family: 'Noto Serif JP', serif;
+        font-size: 21px;
+        font-weight: 600;
+        color: var(--brown-dark);
+      }
+
+      .lineup__note {
+        font-size: 10.5px;
+        color: var(--text-light);
+        margin-top: 4px;
+      }
+
+      .allergy {
+        background: var(--beige);
+        border-left: 3px solid var(--orange);
+        padding: 18px 24px;
+        font-size: 13px;
+        color: var(--text-mid);
+        line-height: 1.9;
+      }
+      .allergy strong { color: var(--brown-dark); }
+
+      /* ─── SHOP ───────────────────────────────── */
+      .sec-shop {
+        background: var(--brown-dark);
+        color: #fff;
+      }
+
+      .shop__inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: stretch;
+        min-height: 480px;
+      }
+
+      .shop__text-side {
+        padding: 80px 56px 80px 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .shop__logo-wrap {
+        overflow: hidden;
+      }
+
+      .shop__logo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+      }
+
+      .sec-shop .eyebrow { color: #E8B460; }
+      .sec-shop .sec-title { color: #fff; font-size: clamp(20px, 2.8vw, 30px); }
+
+      .shop__info {
+        margin-top: 36px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .shop__row {
+        display: flex;
+        gap: 16px;
+        font-size: 14px;
+      }
+
+      .shop__label {
+        min-width: 80px;
+        color: #E8B460;
+        font-size: 11px;
+        letter-spacing: .1em;
+        padding-top: 3px;
+        font-family: 'Noto Serif JP', serif;
+      }
+
+      .shop__value {
+        color: rgba(255,255,255,.82);
+        font-weight: 300;
+        line-height: 1.9;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 36px;
+        padding: 15px 40px;
+        background: var(--orange-bg);
+        color: #fff;
+        text-decoration: none;
+        font-size: 13.5px;
+        letter-spacing: .2em;
+        font-family: 'Noto Serif JP', serif;
+        transition: background .25s, transform .25s;
+      }
+      .btn:hover {
+        background: #f0a030;
+        transform: translateY(-2px);
+      }
+      .btn svg { flex-shrink: 0; }
+
+      /* ─── FOOTER ─────────────────────────────── */
+      footer {
+        background: #210f00;
+        color: rgba(255,255,255,.4);
+        text-align: center;
+        padding: 32px 20px;
+        font-size: 11.5px;
+        letter-spacing: .1em;
+      }
+
+      /* ─── RESPONSIVE ─────────────────────────── */
+      @media (max-width: 900px) {
+        header { padding: 10px 20px; }
+        nav { display: none; }
+        section { padding: 64px 20px; }
+        .what__grid { grid-template-columns: 1fr; gap: 36px; }
+        .kodawari__grid { grid-template-columns: 1fr; gap: 40px; }
+        .story__layout { grid-template-columns: 1fr; gap: 40px; }
+        .story__visual { position: static; display: flex; flex-direction: column; align-items: center; }
+        .story__kiln { width: 140px; }
+        .shop__inner { grid-template-columns: 1fr; }
+        .shop__text-side { padding: 56px 24px; }
+        .shop__logo-wrap { min-height: 280px; }
+        .lineup__grid { grid-template-columns: repeat(3, 1fr); }
+      }
+
+      @media (max-width: 560px) {
+        .lineup__grid { grid-template-columns: repeat(2, 1fr); }
+      }
+    </style>
+  </head>
+  <body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <img src="C:/Users/AYUMU OTA/Desktop/Files/OPEN ONE/ロゴデザイン02.jpg"
+         alt="Bakery Demain 石窯パン工房" class="hd-logo">
+    <nav>
+      <a href="#kodawari">こだわり</a>
+      <a href="#story">製法ストーリー</a>
+      <a href="#lineup">ラインナップ</a>
+      <a href="#shop">店舗情報</a>
+    </nav>
+  </header>
+
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <img src="C:/Users/AYUMU OTA/Downloads/食パン一斤袋デザイン2018(生食パン).png"
+           alt="石窯生食パン" class="hero__product-logo">
+      <div class="hero__text-group">
+        <p class="hero__catch">
+          異次元の、しっとり。<br>
+          異次元の、もっちり。
+        </p>
+        <p class="hero__sub">岐阜・石窯パン工房 Demain の No.1</p>
+      </div>
+    </div>
+    <div class="hero__scroll">
+      SCROLL
+      <span class="hero__scroll-line"></span>
+    </div>
+  </section>
+
+
+  <!-- ===== QUESTION ===== -->
+  <section class="sec-question">
+    <div class="wrap" style="text-align:center;">
+      <span class="eyebrow">Story</span>
+      <p class="question__headline">
+        こんなに白くて、<br>
+        こんなにやわらかい食パンに<br>
+        出会ったことがありますか？
+      </p>
+      <div class="rule rule--center"></div>
+      <p class="question__body">
+        噛むほどに広がる、自然な甘み。<br>
+        もちもちとしながら、とろけるような口どけ。<br>
+        岐阜の石窯から生まれた——これが「生食パン」という体験です。
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ===== WHAT IS ===== -->
+  <section class="sec-what">
+    <div class="wrap">
+      <div class="what__grid">
+        <img src="C:/Users/AYUMU OTA/Downloads/DSC04215Ssize.JPG"
+             alt="石窯生食パンの断面" class="what__img">
+        <div>
+          <span class="eyebrow">What is</span>
+          <h2 class="sec-title">石窯生食パン<br>とは</h2>
+          <div class="rule"></div>
+          <p class="what__lead">まずはそのまま、生食でどうぞ。</p>
+          <p class="what__body">
+            特別な湯種製法で練り上げた生地を、<br>
+            スペインから取り寄せた本格石窯の遠赤外線でじっくりと焼き上げます。<br><br>
+            バターもジャムも、何もいらない。<br>
+            食パンそのものがごちそうになる、<br>
+            異次元の食体験がここにあります。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== KODAWARI ===== -->
+  <section class="sec-kodawari" id="kodawari">
+    <div class="wrap">
+      <span class="eyebrow">Our Commitment</span>
+      <h2 class="sec-title">3つのこだわり</h2>
+      <div class="rule rule--center"></div>
+      <div class="kodawari__grid">
+
+        <div class="kodawari__card">
+          <span class="kodawari__num">01</span>
+          <span class="kodawari__icon">🌾</span>
+          <h3 class="kodawari__ttl">湯種製法</h3>
+          <p class="kodawari__body">
+            熱湯で小麦粉を糊化させる「湯種」を生地に加えることで、水分保持力が格段にアップ。焼き上がり後も驚くほどしっとり・もちもちとした食感が長く続きます。
+          </p>
+        </div>
+
+        <div class="kodawari__card">
+          <span class="kodawari__num">02</span>
+          <span class="kodawari__icon">🏺</span>
+          <h3 class="kodawari__ttl">スペイン製石窯</h3>
+          <p class="kodawari__body">
+            本場スペインから直輸入した本格石窯を使用。蓄熱性の高い石が熱を均一に保ち、パン生地を芯まで丁寧に、そして優しく焼き上げます。
+          </p>
+        </div>
+
+        <div class="kodawari__card">
+          <span class="kodawari__num">03</span>
+          <span class="kodawari__icon">🔥</span>
+          <h3 class="kodawari__ttl">遠赤外線の恵み</h3>
+          <p class="kodawari__body">
+            石窯から放射される豊かな遠赤外線が、食材の内部までじっくりと熱を届けます。外はしっかり、中はふんわり——その焼き加減が、唯一無二の食感を生み出します。
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== STORY ===== -->
+  <section class="sec-story" id="story">
+    <div class="wrap">
+      <span class="story__tag">STORY</span>
+      <h2 class="sec-title">なぜ、石窯なのか。</h2>
+      <div class="story__layout">
+
+        <div class="story__visual">
+          <div class="story__kiln">
+            <!-- 石窯イメージ SVG -->
+            <svg viewBox="0 0 120 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- 煙突 -->
+              <rect x="50" y="0" width="20" height="32" rx="3" fill="#8B5E30" opacity=".7"/>
+              <!-- 石窯本体ドーム -->
+              <ellipse cx="60" cy="80" rx="52" ry="20" fill="#7A4E28" opacity=".4"/>
+              <path d="M10 80 Q10 30 60 30 Q110 30 110 80 Z" fill="#8B5E30"/>
+              <path d="M14 80 Q14 36 60 36 Q106 36 106 80 Z" fill="#A0673C"/>
+              <!-- 入口アーチ -->
+              <path d="M36 80 Q36 56 60 56 Q84 56 84 80 Z" fill="#3D1E00"/>
+              <!-- 炎 -->
+              <ellipse cx="60" cy="76" rx="10" ry="7" fill="#E89420" opacity=".8"/>
+              <ellipse cx="60" cy="72" rx="6" ry="5" fill="#FFC040" opacity=".9"/>
+              <!-- 土台 -->
+              <rect x="8" y="80" width="104" height="14" rx="4" fill="#7A4E28"/>
+              <rect x="4" y="92" width="112" height="10" rx="3" fill="#6B3E1A"/>
+            </svg>
+          </div>
+          <p class="story__since">since 2012 — Gifu, Japan</p>
+        </div>
+
+        <div>
+          <div class="story__block">
+            <h3>パン職人の、問いから始まった</h3>
+            <p>「もっとおいしいパンを焼けないか」——Demainのパン職人はずっとその問いを持ち続けてきました。素材をどれほど厳選しても、製法をいくら工夫しても、どこか届かない領域があった。その答えが、石窯にありました。</p>
+          </div>
+          <div class="story__block">
+            <h3>スペインの石窯が、岐阜にやってきた</h3>
+            <p>遠赤外線を豊富に放射する本場スペインの石窯を、岐阜・柳津に設置。蓄熱性の高い石が生み出す安定した熱環境は、どんな高性能オーブンでも再現できない焼き上がりをパン生地にもたらします。</p>
+          </div>
+          <div class="story__block">
+            <h3>湯種と石窯が出会ったとき</h3>
+            <p>もちもち食感を最大化する湯種製法と、遠赤外線でじっくり焼き上げる石窯。このふたつが出会ったとき、「今まで食べた食パンとは別物」と言っていただける、まったく新しい食体験が生まれました。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== EAT ===== -->
+  <section class="sec-eat">
+    <div class="wrap">
+      <span class="eyebrow">How to Enjoy</span>
+      <p class="eat__headline">
+        まずは、何もつけずに。<br>
+        ちぎって、口へ。
+      </p>
+      <div class="rule rule--center"></div>
+      <p class="eat__body">
+        バターもジャムも不要です。<br>
+        焼きたてのやわらかさ、冷めてもしっとりとした食感——<br>
+        まずはそのまま「生食」で、この食パンの本当のおいしさを確かめてみてください。<br><br>
+        トーストにすれば、外はカリッと中はふんわりの新食感へ。<br>
+        Demainの石窯生食パンは、どんな食べ方も裏切りません。
+      </p>
+    </div>
+    <img src="C:/Users/AYUMU OTA/Downloads/DSC04215Ssize.JPG"
+         alt="石窯生食パン" class="eat__photo">
+  </section>
+
+
+  <!-- ===== LINEUP ===== -->
+  <section class="sec-lineup" id="lineup">
+    <div class="wrap">
+      <span class="eyebrow">Lineup &amp; Price</span>
+      <h2 class="sec-title">ラインナップ</h2>
+      <div class="rule"></div>
+      <div class="lineup__grid">
+
+        <div class="lineup__card">
+          <div class="lineup__size-en">½</div>
+          <div class="lineup__size-ja">1/2斤</div>
+          <div class="lineup__price">¥220</div>
+          <div class="lineup__note">税込（8%）</div>
+        </div>
+
+        <div class="lineup__card">
+          <div class="lineup__size-en">1</div>
+          <div class="lineup__size-ja">1斤</div>
+          <div class="lineup__price">¥439</div>
+          <div class="lineup__note">税込（8%）</div>
+        </div>
+
+        <div class="lineup__card">
+          <div class="lineup__size-en">2</div>
+          <div class="lineup__size-ja">2斤ブロック</div>
+          <div class="lineup__price">¥856</div>
+          <div class="lineup__note">税込（8%）</div>
+        </div>
+
+        <div class="lineup__card">
+          <div class="lineup__size-en">3</div>
+          <div class="lineup__size-ja">3斤ブロック</div>
+          <div class="lineup__price">¥1,284</div>
+          <div class="lineup__note">税込（8%）</div>
+        </div>
+
+        <div class="lineup__card">
+          <div class="lineup__size-en">3/5</div>
+          <div class="lineup__size-ja">3/5斤</div>
+          <div class="lineup__price">¥263</div>
+          <div class="lineup__note">税込（8%）</div>
+        </div>
+
+      </div>
+      <div class="allergy">
+        <strong>アレルギー表示：</strong>小麦・乳・大豆を含みます。
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== SHOP ===== -->
+  <section class="sec-shop" id="shop" style="padding: 0;">
+    <div class="shop__inner">
+
+      <div class="shop__text-side">
+        <span class="eyebrow">Shop Info</span>
+        <h2 class="sec-title">石窯パン工房<br>Bakery Demain</h2>
+        <div class="shop__info">
+          <div class="shop__row">
+            <span class="shop__label">住所</span>
+            <span class="shop__value">〒501-6103<br>岐阜県岐阜市柳津町蓮池2丁目38</span>
+          </div>
+          <div class="shop__row">
+            <span class="shop__label">TEL</span>
+            <span class="shop__value">058-387-8816</span>
+          </div>
+          <div class="shop__row">
+            <span class="shop__label">営業時間</span>
+            <span class="shop__value">8:30 〜 18:00</span>
+          </div>
+          <div class="shop__row">
+            <span class="shop__label">定休日</span>
+            <span class="shop__value">毎週火曜日・水曜日</span>
+          </div>
+        </div>
+        <a href="https://www.bakerydemain.com/" target="_blank" rel="noopener" class="btn">
+          公式サイトを見る
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="shop__logo-wrap">
+        <img src="C:/Users/AYUMU OTA/Desktop/Files/OPEN ONE/ロゴデザイン02.jpg"
+             alt="Bakery Demain 石窯パン工房" class="shop__logo">
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© Bakery Demain 石窯パン工房 All Rights Reserved.</p>
+  </footer>
+
+  </body>
+  </html>
